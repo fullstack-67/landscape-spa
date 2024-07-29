@@ -41,7 +41,9 @@ interface PropsButtonGroup {
   todo: TodoType;
 }
 const ButtonGroup: FC<PropsButtonGroup> = ({ todo, fetchData }) => {
+  const [setPending] = useStore(state => ([state.setPending]))
   function handleDelete(id: string) {
+    setPending(true)
     axios
       .delete("/api/todo", { data: { curId: id } })
       .then(fetchData)
@@ -49,7 +51,8 @@ const ButtonGroup: FC<PropsButtonGroup> = ({ todo, fetchData }) => {
         setMode("ADD");
         setInputText("");
       })
-      .catch((err) => alert(err));
+      .catch((err) => alert(err))
+      .finally(() => setPending(false));
   }
 
   const [mode, setMode, setInputText, setCurId] = useStore((state) => [
@@ -77,7 +80,6 @@ const ButtonGroup: FC<PropsButtonGroup> = ({ todo, fetchData }) => {
         className={styles["custom-btn"]}
         style={{ cursor: "pointer" }}
         onClick={() => handleDelete(todo.id)}
-        data-cy="todo-item-delete"
       >
         🗑️
       </div>
