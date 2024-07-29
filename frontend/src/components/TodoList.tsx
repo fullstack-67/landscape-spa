@@ -1,6 +1,7 @@
 import { FC } from "react";
 import axios from "axios";
 import useStore, { TodoType } from "../utils/store";
+import styles from './spinner.module.css'
 
 interface Props {
   fetchData: () => void;
@@ -63,7 +64,7 @@ const ButtonGroup: FC<PropsButtonGroup> = ({ todo, fetchData }) => {
   return (
     <>
       <div
-        style={{ cursor: "pointer" }}
+        className={styles["custom-btn"]}
         onClick={() => {
           setMode("EDIT");
           setCurId(todo.id);
@@ -73,6 +74,7 @@ const ButtonGroup: FC<PropsButtonGroup> = ({ todo, fetchData }) => {
         🖊️
       </div>
       <div
+        className={styles["custom-btn"]}
         style={{ cursor: "pointer" }}
         onClick={() => handleDelete(todo.id)}
         data-cy="todo-item-delete"
