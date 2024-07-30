@@ -1,10 +1,6 @@
 import { create } from "zustand";
-
+import { type TodoType } from "./types";
 export type ModeType = "ADD" | "EDIT";
-export type TodoType = {
-  id: string;
-  todoText: string;
-};
 
 interface TodoStoreState {
   mode: ModeType;

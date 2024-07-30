@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { type TodoItem } from "./utils/types";
+import { type TodoType } from "./utils/types";
 import { FormInput } from "./components/FromInput";
 import { TodoList } from "./components/TodoList";
 import { Spinner } from "./components/Spinner";
 
 function App() {
   // Fetching data
-  const [todos, setTodos] = useState<TodoItem[]>([]);
+  const [todos, setTodos] = useState<TodoType[]>([]);
   async function fetchData() {
-    const res = await axios.get<TodoItem[]>("api/todo");
+    const res = await axios.get<TodoType[]>("api/todo");
     setTodos(res.data);
   }
   useEffect(() => {

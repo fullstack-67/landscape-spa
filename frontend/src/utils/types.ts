@@ -1,7 +1,4 @@
-export interface TodoItem {
+export interface TodoType {
   id: string;
   todoText: string;
-  isDone: boolean;
-  createdAt: string;
-  updatedAt: string;
 }
