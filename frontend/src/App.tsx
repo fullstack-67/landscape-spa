@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { type TodoItem } from "./types";
+import { type TodoItem } from "./utils/types";
 import { FormInput } from "./components/FromInput";
 import { TodoList } from "./components/TodoList";
 import { Spinner } from "./components/Spinner";
