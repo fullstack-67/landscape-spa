@@ -1,7 +1,8 @@
 import { FC } from "react";
 import axios from "axios";
-import useStore, { TodoType } from "../utils/store";
-import styles from './spinner.module.css'
+import useStore from "../utils/store";
+import { TodoType } from "../utils/types";
+import styles from "./spinner.module.css";
 
 interface Props {
   fetchData: () => void;
@@ -41,9 +42,9 @@ interface PropsButtonGroup {
   todo: TodoType;
 }
 const ButtonGroup: FC<PropsButtonGroup> = ({ todo, fetchData }) => {
-  const [setPending] = useStore(state => ([state.setPending]))
+  const [setPending] = useStore((state) => [state.setPending]);
   function handleDelete(id: string) {
-    setPending(true)
+    setPending(true);
     axios
       .delete("/api/todo", { data: { curId: id } })
       .then(fetchData)
